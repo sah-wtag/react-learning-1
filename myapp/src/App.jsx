@@ -1,4 +1,4 @@
-import { act, useReducer, useState } from "react";
+import { useReducer, useState } from "react";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, { balance: 0 });
