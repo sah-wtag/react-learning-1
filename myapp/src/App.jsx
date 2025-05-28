@@ -1,36 +1,40 @@
-import { useReducer } from "react";
+import { act, useReducer, useState } from "react";
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, { count: 0, incrementBy: 1 });
+  const [state, dispatch] = useReducer(reducer, { balance: 0 });
+  const [amount, setAmount] = useState(0);
   function reducer(state, action) {
-    if (action.type == "increment") {
-      return { ...state, count: state.count + state.incrementBy };
+    if (action.type == "add") {
+      return { ...state, balance: state.balance + action.payload };
     }
-    if (action.type == "decrement") {
-      return { ...state, count: state.count - state.incrementBy };
-    }
-    if (action.type == "setIncrement") {
-      return { ...state, incrementBy: action.payload };
+
+    if (action.type == "sub") {
+      return { ...state, balance: state.balance - action.payload };
     }
   }
   return (
     <div>
       <div>
-        <h1>Use reducer count: {state.count}</h1>
-        <input
-          type="text"
-          value={state.incrementBy}
-          onChange={(e) =>
-            dispatch({ type: "setIncrement", payload: Number(e.target.value) })
-          }
-        />
-        <button onClick={(e) => dispatch({ type: "increment", payload: 1 })}>
-          Increment state
-        </button>
-        <button onClick={(e) => dispatch({ type: "decrement", payload: 1 })}>
-          Decrement state
-        </button>
+        <h1>Current Balance {state.balance}</h1>
       </div>
+      <input
+        type="text"
+        onChange={(e) => setAmount(e.target.value)}
+        value={amount}
+        name=""
+        id=""
+      />
+      <button
+        onClick={() => dispatch({ type: "add", payload: Number(amount) })}
+      >
+        Deposit
+      </button>
+
+      <button
+        onClick={() => dispatch({ type: "sub", payload: Number(amount) })}
+      >
+        Withdraw
+      </button>
     </div>
   );
 }
