@@ -4,6 +4,8 @@ import Homepage from "./pages/Homepage";
 import Dashboard from "./pages/Dashboard";
 import PageNotFound from "./pages/PageNotFound";
 import Nav from "./Nav";
+import Profile from "./pages/Profile";
+import Settings from "./pages/Settings";
 
 function App() {
   return (
@@ -11,7 +13,10 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route path="profile" element={<Profile />}></Route>
+          <Route path="settings" element={<Settings />}></Route>
+        </Route>
         <Route path="/banking" element={<Banking />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
