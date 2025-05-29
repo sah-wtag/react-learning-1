@@ -6,6 +6,7 @@ import PageNotFound from "./pages/PageNotFound";
 import Nav from "./Nav";
 import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
+import Products from "./pages/Products";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="settings" element={<Settings />}></Route>
         </Route>
         <Route path="/banking" element={<Banking />} />
+        <Route path="/products/:id" element={<Products />}></Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
