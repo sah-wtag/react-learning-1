@@ -1,34 +1,28 @@
-import { useReducer, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Banking from "./pages/Banking";
+import Homepage from "./pages/Homepage";
+import Dashboard from "./pages/Dashboard";
+import PageNotFound from "./pages/PageNotFound";
+import Nav from "./Nav";
+import Profile from "./pages/Profile";
+import Settings from "./pages/Settings";
+import Products from "./pages/Products";
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [state, dispatch] = useReducer(reducer, 0);
-  function reducer(state, action) {
-    if (action.type == "increment") {
-      return state + action.payload;
-    }
-    if (action.type == "decrement") {
-      return state - action.payload;
-    }
-  }
   return (
-    <div>
-      <div>
-        <h1>Count is: {count}</h1>
-        <button onClick={(e) => setCount(count + 1)}>Increment</button>
-        <button onClick={(e) => setCount(count - 1)}>Decrement</button>
-      </div>
-
-      <div>
-        <h1>Use reducer count: {state}</h1>
-        <button onClick={(e) => dispatch({ type: "increment", payload: 1 })}>
-          Increment state
-        </button>
-        <button onClick={(e) => dispatch({ type: "decrement", payload: 1 })}>
-          Decrement state
-        </button>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route path="profile" element={<Profile />}></Route>
+          <Route path="settings" element={<Settings />}></Route>
+        </Route>
+        <Route path="/banking" element={<Banking />} />
+        <Route path="/products/:id" element={<Products />}></Route>
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
