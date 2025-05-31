@@ -13,7 +13,7 @@ export default function Browser() {
     <BrowserRouter>
       <Nav />
       <Routes>
-        <Route path="/" element={<Homepage />} />
+        <Route path="/homepage" element={<Homepage />} />
         <Route path="/dashboard" element={<Dashboard />}>
           <Route path="profile" element={<Profile />}></Route>
           <Route path="settings" element={<Settings />}></Route>
