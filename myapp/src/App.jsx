@@ -5,7 +5,8 @@ function App() {
   return (
     <div>
       {/* <Browser /> */}
-      <UserProviders />
+      {/* <UserProviders /> */}
+       
     </div>
   );
 }
