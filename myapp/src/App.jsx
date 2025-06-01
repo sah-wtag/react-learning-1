@@ -1,19 +1,16 @@
-import { createContext, useState } from "react";
 import Browser from "./Browser";
 import Checkout from "./Checkout";
+import { UserProvider } from "./context/UserContext";
 import Login from "./Login";
-export const userContext = createContext();
 
 function App() {
-  const [user, setUser] = useState("This is a context");
   return (
     <div>
       {/* <Browser /> */}
-
-      <userContext.Provider value={{ user, setUser }}>
+      <UserProvider>
         <Login />
         <Checkout />
-      </userContext.Provider>
+      </UserProvider>
     </div>
   );
 }
