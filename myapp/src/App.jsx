@@ -1,4 +1,5 @@
 import Browser from "./Browser";
+import LoginStorage from "./LoginStorage";
 import UserProviders from "./UserProviders";
 
 function App() {
@@ -6,7 +7,7 @@ function App() {
     <div>
       {/* <Browser /> */}
       {/* <UserProviders /> */}
-       
+      <LoginStorage />
     </div>
   );
 }
